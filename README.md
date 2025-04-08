@@ -7,7 +7,7 @@ Smart Todo List App
 ## Features
 
 - **Manual Task Management**
-  - Create, update, and delete tasks
+  - Create and delete tasks
   - Mark tasks as complete
   - Set deadlines for tasks
 
@@ -17,7 +17,6 @@ Smart Todo List App
 
 - **Dynamic UI**
   - Real-time countdown for ongoing tasks
-  - Tab-based navigation between task categories
   - Responsive design for mobile and desktop
   - Interactive task cards with status-based styling
 
@@ -47,7 +46,7 @@ Smart Todo List App
 1. Clone the repository
 ```bash
 git clone https://github.com/sayamjn/Smart-Todo-List-App.git
-cd smart-todo-app
+cd Smart-Todo-List-App
 ```
 
 2. Set up the backend
@@ -97,7 +96,6 @@ The backend provides the following API endpoints:
 - `GET /api/tasks/status/:status` - Get tasks by status (ongoing, success, failure)
 - `GET /api/tasks/:id` - Get a single task by ID
 - `POST /api/tasks` - Create a new task
-- `PUT /api/tasks/:id` - Update an existing task
 - `DELETE /api/tasks/:id` - Delete a task
 - `GET /api/tasks/counts/all` - Get counts of tasks by status
 
