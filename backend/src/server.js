@@ -33,6 +33,11 @@ app.get('/', (req, res) => {
   res.status(200).json({ status: 'App is running' });
 });
 
+cron.schedule('* * * * *', async () => {
+  console.log('Running scheduled task status update');
+  await taskService.updateTaskStatuses();
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
