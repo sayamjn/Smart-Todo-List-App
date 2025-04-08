@@ -9,28 +9,29 @@ dotenv.config();
 
 const taskRoutes = require('./routes/taskRoutes');
 
+const taskService = require('./services/taskService');
+
 const app = express();
-const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI;
+const PORT = process.env.PORT || 4000;
 
-if (!MONGODB_URI) {
-  console.error('MONGODB_URI not defined in environment variables.');
-}
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from Next.js frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
+}));
 
-app.use(cors());
 app.use(express.json());
-app.use(morgan('dev'));
+app.use(morgan('dev')); 
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 app.use('/api/tasks', taskRoutes);
 
-app.get('/', (req, res) => {
-  res.status(200).json({ status: 'App is running' });
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
 });
 
 cron.schedule('* * * * *', async () => {
