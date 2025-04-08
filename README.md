@@ -63,7 +63,7 @@ MONGODB_URI=mongodb://localhost:27017/smart-todo-app
 
 4. Set up the frontend
 ```bash
-cd ../frontend
+cd frontend
 npm install
 ```
 
