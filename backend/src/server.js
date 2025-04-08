@@ -7,6 +7,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const taskRoutes = require('./routes/taskRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -24,6 +26,8 @@ mongoose.connect(MONGODB_URI)
   .catch((err) => {
     console.error('MongoDB connection error:', err);
   });
+
+app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.status(200).json({ status: 'App is running' });
