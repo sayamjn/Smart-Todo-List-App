@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from Next.js frontend
+  origin: ['http://localhost:3000',"https://smart-todo-list-app.vercel.app/"], // Allow requests from Next.js frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true 
